@@ -421,6 +421,78 @@
   .glossary-search-wrap-inline, .alpha-jump { padding-left: 1.5rem; padding-right: 1.5rem; }
   .glossary-body { padding: 1.5rem 1.5rem 4rem; }
 }
+
+/* Learn More */
+.resource-section { margin-bottom: 2.75rem; }
+.resource-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--green-bright);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.resource-section-title::before {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 1px;
+  background: var(--green-accent);
+}
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.resource-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.3rem 1.5rem;
+  text-decoration: none;
+  transition: border-color 0.25s, background 0.25s;
+}
+.resource-card:hover { border-color: var(--green-glow); background: var(--bg-card-hover); }
+.resource-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.resource-card:hover .resource-name { color: var(--green-phosphor); }
+.resource-name svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+  stroke: var(--text-dim);
+  transition: stroke 0.25s, transform 0.25s;
+}
+.resource-card:hover .resource-name svg { stroke: var(--green-phosphor); transform: translate(2px, -2px); }
+.resource-host {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--green-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+  word-break: break-word;
+}
+.resource-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 768px) {
+  .resource-grid { grid-template-columns: 1fr; }
+}
 </style>
 
 <div class="page-header">
@@ -437,6 +509,7 @@
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('claude',   this)">Claude</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('gemini',   this)">Gemini</button>
     <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('chatgpt',  this)">ChatGPT</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('learn',    this)">Learn More</button>
   </div>
 </div>
 
@@ -531,12 +604,12 @@
           <tr><td>Esc, Esc</td><td>Open rewind / checkpoint menu</td></tr>
           <tr><td>Ctrl+C</td><td>Cancel input or exit on empty prompt</td></tr>
           <tr><td>Ctrl+R</td><td>Reverse search prompt history</td></tr>
-          <tr><td>Ctrl+L</td><td>Toggle verbose transcript view</td></tr>
+          <tr><td>Ctrl+L</td><td>Clear / redraw the terminal screen</td></tr>
+          <tr><td>Ctrl+O</td><td>Toggle transcript view (detailed tool usage)</td></tr>
           <tr><td>Ctrl+V</td><td>Paste image directly into prompt</td></tr>
           <tr><td>↑ / ↓</td><td>Scroll through prompt history</td></tr>
           <tr><td>@ + path</td><td>Reference a file or directory inline</td></tr>
           <tr><td>/</td><td>Open slash command menu</td></tr>
-          <tr><td>?</td><td>Show shortcuts for current terminal</td></tr>
         </table>
       </div>
 
@@ -549,7 +622,7 @@
           <li><code>claude -r</code><span>Resume last session</span></li>
           <li><code>claude -c</code><span>Continue most recent conversation</span></li>
           <li><code>--model &lt;id&gt;</code><span>Specify model (e.g. claude-sonnet-4-6)</span></li>
-          <li><code>--session &lt;name&gt;</code><span>Named session for easy resume</span></li>
+          <li><code>--session-id &lt;id&gt;</code><span>Resume a specific session by UUID</span></li>
           <li><code>--add-dir &lt;path&gt;</code><span>Add working directory</span></li>
           <li><code>--output-format</code><span>json / text / stream-json</span></li>
           <li><code>--max-turns N</code><span>Limit agent turns</span></li>
@@ -733,8 +806,8 @@
             <div class="vocab-def">Integrations with Google Workspace, YouTube, Flights, Hotels, Maps, and third-party services. Enable in Settings → Extensions.</div>
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
-            <div class="vocab-term">Flash / Pro / Advanced</div>
-            <div class="vocab-def">Model tiers: Flash = fast and cheap; Pro = balanced; Advanced (Ultra) = most capable, required for Deep Research and 1M context.</div>
+            <div class="vocab-term">Flash / Pro</div>
+            <div class="vocab-def">Model tiers: Flash = fast and cheap; Pro = the most capable, for harder reasoning and coding. Paid plans (Google AI Pro / Ultra) raise usage limits and unlock features like Deep Research.</div>
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">NotebookLM</div>
@@ -757,13 +830,10 @@
       <div class="cs-card">
         <div class="cs-card-title">Keyboard shortcuts · gemini.google.com</div>
         <table class="shortcut-table">
-          <tr><td>Ctrl/Cmd + Enter</td><td>Submit prompt</td></tr>
-          <tr><td>Shift + Enter</td><td>New line in prompt without submitting</td></tr>
-          <tr><td>Esc</td><td>Close panels or cancel current action</td></tr>
-          <tr><td>Ctrl/Cmd + K</td><td>Start a new conversation</td></tr>
-          <tr><td>Ctrl/Cmd + Shift + T</td><td>Toggle Dark/Light theme</td></tr>
-          <tr><td>/ (in prompt)</td><td>Trigger Gems or extension shortcuts</td></tr>
+          <tr><td>Enter</td><td>Submit prompt</td></tr>
+          <tr><td>Shift + Enter</td><td>New line without submitting</td></tr>
         </table>
+        <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.55; margin-top: 0.8rem;">Gemini's web app has very few native keyboard shortcuts beyond these basics. Power users add a browser extension for model switching, search, and theme toggles.</p>
 
         <div style="margin-top: 1.5rem;">
           <div class="cmd-group-label">Workspace @ references</div>
@@ -788,9 +858,9 @@
           <li><code>Code execution</code><span>Click Run on any code block (Advanced) — runs Python in-session</span></li>
           <li><code>Canvas</code><span>Say "Open in canvas" or click the canvas icon for collaborative doc/code editing</span></li>
           <li><code>Export to Docs</code><span>Click ⋮ → Export to Google Docs on any long response</span></li>
-          <li><code>Image gen</code><span>Ask "Generate an image of..." — uses Imagen 3</span></li>
+          <li><code>Image gen</code><span>Ask "Generate an image of..." — uses Imagen</span></li>
           <li><code>NotebookLM</code><span>notebooklm.google.com — upload sources, ask grounded questions</span></li>
-          <li><code>AI Studio</code><span>aistudio.google.com — direct API access, system prompts, model selection, no guardrails</span></li>
+          <li><code>AI Studio</code><span>aistudio.google.com — direct API access, system prompts, model selection, adjustable safety settings</span></li>
           <li><code>1M context</code><span>Upload files or paste large docs — no chunking needed on Pro/Flash</span></li>
         </ul>
       </div>
@@ -914,14 +984,14 @@
       <div class="cs-card">
         <div class="cs-card-title">Keyboard shortcuts</div>
         <table class="shortcut-table">
+          <tr><td>Ctrl/Cmd + Shift + O</td><td>New chat</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + S</td><td>Toggle sidebar</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + C</td><td>Copy last response</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + ;</td><td>Copy last code block</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + I</td><td>Set custom instructions</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + Backspace</td><td>Delete current chat</td></tr>
+          <tr><td>Shift + Esc</td><td>Focus the prompt input</td></tr>
           <tr><td>Ctrl/Cmd + /</td><td>Show all keyboard shortcuts</td></tr>
-          <tr><td>Ctrl/Cmd + Shift + ;</td><td>New chat</td></tr>
-          <tr><td>Ctrl/Cmd + Shift + C</td><td>Toggle sidebar</td></tr>
-          <tr><td>Ctrl/Cmd + Shift + O</td><td>Open chat history</td></tr>
-          <tr><td>Ctrl/Cmd + Shift + A</td><td>Attach a file</td></tr>
-          <tr><td>Shift + Esc</td><td>Focus chat input</td></tr>
-          <tr><td>Ctrl/Cmd + Enter</td><td>Submit prompt</td></tr>
-          <tr><td>Shift + Enter</td><td>New line without submitting</td></tr>
         </table>
       </div>
 
@@ -932,7 +1002,7 @@
           <li><code>Canvas</code><span>Click canvas icon or say "Open in canvas" — opens side-by-side editor</span></li>
           <li><code>Code Interpreter</code><span>Attach a file (CSV, log, code) — ChatGPT auto-enables analysis mode</span></li>
           <li><code>Image generation</code><span>Say "Generate an image of..." or click the image icon — uses DALL-E 3</span></li>
-          <li><code>Web browse</code><span>Click the browse icon or ask "Search the web for..." — uses Bing</span></li>
+          <li><code>Web search</code><span>Click the search icon or ask "Search the web for..." — pulls live results with citations</span></li>
           <li><code>Voice mode</code><span>Click the headphone icon — real-time voice conversation with GPT-4o</span></li>
           <li><code>Memory</code><span>Settings → Personalization → Memory — view, edit, or delete what it knows</span></li>
           <li><code>Custom GPTs</code><span>chatgpt.com/gpts — browse store or click your name → My GPTs to build</span></li>
@@ -1003,6 +1073,104 @@
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TAB 5 · LEARN MORE
+════════════════════════════════════════════ -->
+<div id="panel-learn" class="tab-panel">
+  <div class="cs-body">
+    <p class="cs-intro">Where to go next — the resources from the talk plus courses, channels, and hands-on challenges for going deeper on AI, prompting, and agentic engineering.</p>
+
+    <!-- Interactive & Hands-On -->
+    <div class="resource-section">
+      <div class="resource-section-title">Interactive &amp; hands-on</div>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://gandalf.lakera.ai/baseline" target="_blank" rel="noopener">
+          <div class="resource-name">Gandalf <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">gandalf.lakera.ai/baseline</div>
+          <div class="resource-desc">Lakera's hands-on prompt-injection challenge. Trick the AI into revealing its secret password, level by level, and learn how guardrails fail.</div>
+        </a>
+        <a class="resource-card" href="https://promptlyliz.com" target="_blank" rel="noopener">
+          <div class="resource-name">Promptly Liz <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">promptlyliz.com</div>
+          <div class="resource-desc">A tool that rewrites and sharpens your prompts for you — paste a rough prompt and get back a cleaner, more effective version.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Courses & Training -->
+    <div class="resource-section">
+      <div class="resource-section-title">Courses &amp; training</div>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://anthropic.skilljar.com/claude-code-101" target="_blank" rel="noopener">
+          <div class="resource-name">Claude Code 101 <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">anthropic.skilljar.com</div>
+          <div class="resource-desc">Anthropic's official getting-started course for Claude Code — setup, workflows, and the core features.</div>
+        </a>
+        <a class="resource-card" href="https://huggingface.co/learn/context-course" target="_blank" rel="noopener">
+          <div class="resource-name">Context Engineering Course <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">huggingface.co/learn</div>
+          <div class="resource-desc">Hugging Face's free course on context engineering — how to structure what goes into an LLM's window.</div>
+        </a>
+        <a class="resource-card" href="https://academy.openai.com" target="_blank" rel="noopener">
+          <div class="resource-name">OpenAI Academy <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">academy.openai.com</div>
+          <div class="resource-desc">OpenAI's free learning hub — courses, tutorials, and live sessions on ChatGPT, the API, and building with their models.</div>
+        </a>
+        <a class="resource-card" href="https://cloud.google.com/learn/training/machinelearning-ai" target="_blank" rel="noopener">
+          <div class="resource-name">Google Cloud ML &amp; AI <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">cloud.google.com/learn</div>
+          <div class="resource-desc">Google's official training paths and certifications for machine learning and AI on Google Cloud.</div>
+        </a>
+        <a class="resource-card" href="https://www.datacamp.com/tracks/associate-ai-engineer-for-developers" target="_blank" rel="noopener">
+          <div class="resource-name">AI Engineer for Developers <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">datacamp.com</div>
+          <div class="resource-desc">DataCamp career track teaching developers to build AI applications with LLMs, APIs, and frameworks like LangChain.</div>
+        </a>
+        <a class="resource-card" href="https://www.udemy.com/course/become-an-llm-agentic-ai-engineer-14-day-bootcamp-2025/" target="_blank" rel="noopener">
+          <div class="resource-name">LLM &amp; Agentic AI Bootcamp <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">udemy.com</div>
+          <div class="resource-desc">A project-based 14-day bootcamp on building LLM-powered and agentic AI applications.</div>
+        </a>
+        <a class="resource-card" href="https://www.coursera.org/specializations/generative-ai-engineering-with-llms" target="_blank" rel="noopener">
+          <div class="resource-name">GenAI Engineering with LLMs <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">coursera.org</div>
+          <div class="resource-desc">IBM specialization on Coursera covering transformers, RAG, fine-tuning, and deploying generative AI apps.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Docs & References -->
+    <div class="resource-section">
+      <div class="resource-section-title">Docs &amp; references</div>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://github.com/anthropics/skills" target="_blank" rel="noopener">
+          <div class="resource-name">Anthropic Agent Skills <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">github.com/anthropics/skills</div>
+          <div class="resource-desc">The open standard and example skills for extending Claude with reusable, packaged capabilities.</div>
+        </a>
+        <a class="resource-card" href="https://tailscale.com/docs" target="_blank" rel="noopener">
+          <div class="resource-name">Tailscale Docs <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">tailscale.com/docs</div>
+          <div class="resource-desc">Documentation for secure remote access — handy for reaching your dedicated AI box from anywhere.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Creators to Follow -->
+    <div class="resource-section">
+      <div class="resource-section-title">Creators to follow</div>
+      <div class="resource-grid">
+        <a class="resource-card" href="https://www.youtube.com/@TinaHuang1" target="_blank" rel="noopener">
+          <div class="resource-name">Tina Huang <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
+          <div class="resource-host">youtube.com/@TinaHuang1</div>
+          <div class="resource-desc">Ex-Meta data scientist with practical videos on AI tools, data science, and learning how to learn.</div>
+        </a>
       </div>
     </div>
 
