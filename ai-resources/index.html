@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>AI Resources | shehacks.it</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="AI Resources" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Offensive Security · Penetration Testing · Breaking Things With Purpose" />
+<meta name="twitter:description" property="og:description" content="Offensive Security · Penetration Testing · Breaking Things With Purpose" />
+<link rel="canonical" href="https://shehacks.it/ai-resources/" />
+<meta property="og:url" content="https://shehacks.it/ai-resources/" />
+<meta property="og:site_name" content="shehacks.it" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="AI Resources" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Offensive Security · Penetration Testing · Breaking Things With Purpose","headline":"AI Resources","url":"https://shehacks.it/ai-resources/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta name="theme-color" content="#070a07">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <nav class="site-nav">
+  <a href="/" class="nav-logo">she<span>hacks</span>.it</a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/" >Home</a></li>
+    <li><a href="/about/" >About</a></li>
+    <li><a href="/blog/" >Blog</a></li>
+    <li><a href="/projects/" >Projects</a></li>
+    <li><a href="/reads/" >Reads</a></li>
+    <li><a href="/talks/" >Talks</a></li>
+  </ul>
+</nav>
+
+  <style>
+/* ── Tab Strip ── */
+.tab-strip-wrap {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 90;
+  background: rgba(7,10,7,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.tab-strip {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-strip::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  padding: 0.9rem 1.4rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  text-transform: uppercase;
+}
+.tab-btn:hover { color: var(--text-secondary); }
+.tab-btn.active {
+  color: var(--green-phosphor);
+  border-bottom-color: var(--green-phosphor);
+}
+
+/* ── Tab Panels ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Cheat Sheet Layout ── */
+.cs-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+}
+.cs-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+.cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.cs-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.cs-full { margin-bottom: 1.5rem; }
+.cs-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+}
+.cs-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--green-bright);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cs-card-title::before {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 1px;
+  background: var(--green-accent);
+}
+
+/* Vocab chips */
+.vocab-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.vocab-item {}
+.vocab-term {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--green-phosphor);
+  margin-bottom: 0.2rem;
+}
+.vocab-def {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Shortcuts table */
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.shortcut-table tr { border-bottom: 1px solid var(--border); }
+.shortcut-table tr:last-child { border-bottom: none; }
+.shortcut-table td {
+  padding: 0.45rem 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  vertical-align: top;
+}
+.shortcut-table td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green-phosphor);
+  white-space: nowrap;
+  padding-right: 1.2rem;
+  width: 40%;
+}
+.shortcut-table td:last-child { color: var(--text-secondary); }
+
+/* Command groups */
+.cmd-group { margin-bottom: 1rem; }
+.cmd-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.cmd-list { list-style: none; }
+.cmd-list li {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+.cmd-list li:last-child { border-bottom: none; }
+.cmd-list code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green-phosphor);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 38%;
+}
+.cmd-list span { color: var(--text-secondary); }
+
+/* Tip list */
+.tip-list { list-style: none; }
+.tip-list li {
+  padding: 0.55rem 0 0.55rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+}
+.tip-list li:last-child { border-bottom: none; }
+.tip-list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--green-accent);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.tip-list code {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  color: var(--green-phosphor);
+  background: var(--bg-elevated);
+  padding: 0.1em 0.35em;
+}
+.tip-list strong { color: var(--text-bright); font-weight: 600; }
+
+/* Dos and Don'ts */
+.dos-donts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.do-col, .dont-col {}
+.do-col .col-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green-bright);
+  margin-bottom: 0.75rem;
+}
+.dont-col .col-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #b05050;
+  margin-bottom: 0.75rem;
+}
+.do-list, .dont-list { list-style: none; }
+.do-list li, .dont-list li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 0.4rem 0 0.4rem 1.3rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.do-list li:last-child, .dont-list li:last-child { border-bottom: none; }
+.do-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green-bright);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+.dont-list li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: #b05050;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+/* Workspace badge */
+.ws-cmd {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green-phosphor);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cs-grid, .cs-grid-3, .dos-donts { grid-template-columns: 1fr; }
+  .cs-body { padding: 2rem 1.5rem 4rem; }
+  .tab-strip { padding: 0 1rem; }
+  .tab-btn { padding: 0.8rem 1rem; }
+}
+
+/* Glossary (inline) */
+.glossary-search-wrap-inline {
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+}
+.glossary-search-inner-inline {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.glossary-search {
+  flex: 1;
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.6rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.glossary-search:focus { border-color: var(--green-accent); }
+.glossary-search::placeholder { color: var(--text-dim); }
+.glossary-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.alpha-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.6rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.alpha-jump a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 0.2rem 0.45rem;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.alpha-jump a.has-terms { color: var(--text-secondary); }
+.alpha-jump a.has-terms:hover { color: var(--green-phosphor); border-color: var(--green-glow); text-shadow: none; }
+.alpha-jump a.no-terms { opacity: 0.25; pointer-events: none; }
+.glossary-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 2rem 6rem;
+}
+.glossary-letter-group { margin-bottom: 3rem; }
+.glossary-letter {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--green-bright);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+  scroll-margin-top: calc(var(--nav-height) + 110px);
+}
+.glossary-entries {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+.glossary-entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1.4rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.glossary-entry:hover { border-color: var(--green-glow); background: var(--bg-card-hover); }
+.glossary-term {
+  font-family: var(--font-display);
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 0.35rem;
+}
+.glossary-def { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+.glossary-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--green-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.no-results {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .glossary-entries { grid-template-columns: 1fr; }
+  .glossary-search-wrap-inline, .alpha-jump { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .glossary-body { padding: 1.5rem 1.5rem 4rem; }
+}
+</style>
+
+<div class="page-header">
+  <div class="section-inner">
+    <div class="section-label">Prompt Faster, Touch Grass Sooner</div>
+    <h1 class="section-title">AI Resources</h1>
+    <p class="section-subtitle">Glossary, cheat sheets, and prompting playbooks for Claude, Gemini, and ChatGPT — focused on coding and cybersecurity research.</p>
+  </div>
+</div>
+
+<div class="tab-strip-wrap">
+  <div class="tab-strip" role="tablist">
+    <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('glossary', this)">Glossary</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('claude',   this)">Claude</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('gemini',   this)">Gemini</button>
+    <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('chatgpt',  this)">ChatGPT</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TAB 1 · GLOSSARY
+════════════════════════════════════════════ -->
+<div id="panel-glossary" class="tab-panel active">
+  <div class="glossary-search-wrap-inline">
+    <div class="glossary-search-inner-inline">
+      <input type="text" class="glossary-search" id="glossarySearch" placeholder="Search terms or definitions…" autocomplete="off" spellcheck="false">
+      <span class="glossary-count" id="glossaryCount"></span>
+    </div>
+  </div>
+  <nav aria-label="Jump to letter"><div class="alpha-jump" id="alphaJump"></div></nav>
+  <div class="glossary-body">
+    <div class="no-results" id="noResults">No terms match your search.</div>
+    <div id="glossaryContent"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TAB 2 · CLAUDE
+════════════════════════════════════════════ -->
+<div id="panel-claude" class="tab-panel">
+  <div class="cs-body">
+    <p class="cs-intro">Claude Code is the CLI and agent harness built by Anthropic. This sheet covers the desktop/CLI experience — commands, keyboard shortcuts, and prompting patterns for offensive security and development work.</p>
+
+    <!-- Vocab -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Key vocabulary</div>
+        <div class="vocab-grid" style="columns: 2; column-gap: 2rem;">
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Model</div>
+            <div class="vocab-def">The LLM itself — text in, text out. No inherent memory between calls. Any "memory" comes from the surrounding application.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Harness</div>
+            <div class="vocab-def">The execution layer that calls the model, runs its tool calls, and decides when to stop. It's what makes the thing run.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Agent</div>
+            <div class="vocab-def">A model plus everything around it that lets it act, not just respond. Observe → act → observe → repeat.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Scaffolding</div>
+            <div class="vocab-def">The behavior layer: system prompt, tool descriptions, output format, memory. Separate from the model weights.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Context Window</div>
+            <div class="vocab-def">The model's working memory for one run, measured in tokens. Everything competes for space here.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Tokens</div>
+            <div class="vocab-def">The chunks models actually read — ~¾ of an English word on average. You pay per token in and out.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Skills</div>
+            <div class="vocab-def">Reusable packages of knowledge for a task. A tool does one action; a skill bundles everything to reach a goal.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">CLAUDE.md</div>
+            <div class="vocab-def">Project-level instructions that persist across sessions. Lives in your repo root. Keep it lean — it burns context every turn.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">MCP</div>
+            <div class="vocab-def">Model Context Protocol — connects Claude to external tools, data sources, and APIs. Configured in .mcp.json.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Permission Modes</div>
+            <div class="vocab-def">default → acceptEdits → plan. Cycle with Shift+Tab. Plan mode lets Claude think without executing.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Context Rot</div>
+            <div class="vocab-def">When the context window fills with noise, quality quietly drops and the model drifts. Fix: /compact or fresh session.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Effort Level</div>
+            <div class="vocab-def">Controls reasoning depth: off / low / medium / high / max. Higher = slower, better on hard problems, more tokens.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Keyboard shortcuts -->
+      <div class="cs-card">
+        <div class="cs-card-title">Keyboard shortcuts</div>
+        <table class="shortcut-table">
+          <tr><td>Shift+Tab</td><td>Cycle permission modes: default → acceptEdits → plan</td></tr>
+          <tr><td>Esc</td><td>Interrupt Claude mid-response</td></tr>
+          <tr><td>Esc, Esc</td><td>Open rewind / checkpoint menu</td></tr>
+          <tr><td>Ctrl+C</td><td>Cancel input or exit on empty prompt</td></tr>
+          <tr><td>Ctrl+R</td><td>Reverse search prompt history</td></tr>
+          <tr><td>Ctrl+L</td><td>Toggle verbose transcript view</td></tr>
+          <tr><td>Ctrl+V</td><td>Paste image directly into prompt</td></tr>
+          <tr><td>↑ / ↓</td><td>Scroll through prompt history</td></tr>
+          <tr><td>@ + path</td><td>Reference a file or directory inline</td></tr>
+          <tr><td>/</td><td>Open slash command menu</td></tr>
+          <tr><td>?</td><td>Show shortcuts for current terminal</td></tr>
+        </table>
+      </div>
+
+      <!-- CLI flags -->
+      <div class="cs-card">
+        <div class="cs-card-title">CLI flags &amp; headless</div>
+        <ul class="cmd-list">
+          <li><code>claude "prompt"</code><span>Interactive session with starting prompt</span></li>
+          <li><code>claude -p "prompt"</code><span>Headless / non-interactive — pipe-friendly</span></li>
+          <li><code>claude -r</code><span>Resume last session</span></li>
+          <li><code>claude -c</code><span>Continue most recent conversation</span></li>
+          <li><code>--model &lt;id&gt;</code><span>Specify model (e.g. claude-sonnet-4-6)</span></li>
+          <li><code>--session &lt;name&gt;</code><span>Named session for easy resume</span></li>
+          <li><code>--add-dir &lt;path&gt;</code><span>Add working directory</span></li>
+          <li><code>--output-format</code><span>json / text / stream-json</span></li>
+          <li><code>--max-turns N</code><span>Limit agent turns</span></li>
+          <li><code>--allowedTools</code><span>Pre-approve specific tools</span></li>
+          <li><code>--verbose</code><span>Full transcript output</span></li>
+          <li><code>--agent &lt;type&gt;</code><span>Use specific agent (Explore, Plan…)</span></li>
+          <li><code>cat f | claude -p</code><span>Pipe file content as input</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slash commands -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Slash commands</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+          <div>
+            <div class="cmd-group">
+              <div class="cmd-group-label">Session</div>
+              <ul class="cmd-list">
+                <li><code>/clear</code><span>Wipe conversation history</span></li>
+                <li><code>/compact [focus]</code><span>Summarize context, optionally with keyword</span></li>
+                <li><code>/resume</code><span>Resume or switch session</span></li>
+                <li><code>/rename [name]</code><span>Name current session</span></li>
+                <li><code>/branch</code><span>Fork current conversation</span></li>
+                <li><code>/rewind</code><span>Roll back to earlier checkpoint</span></li>
+                <li><code>/export</code><span>Save conversation to file/clipboard</span></li>
+              </ul>
+            </div>
+            <div class="cmd-group">
+              <div class="cmd-group-label">Config</div>
+              <ul class="cmd-list">
+                <li><code>/model [model]</code><span>Switch model</span></li>
+                <li><code>/effort [level]</code><span>off / low / med / high / max</span></li>
+                <li><code>/permissions</code><span>View/update tool approvals</span></li>
+                <li><code>/vim</code><span>Toggle vim keybindings</span></li>
+                <li><code>/color [color]</code><span>Set prompt bar color</span></li>
+                <li><code>/keybindings</code><span>Configure shortcuts</span></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="cmd-group">
+              <div class="cmd-group-label">Context &amp; cost</div>
+              <ul class="cmd-list">
+                <li><code>/cost</code><span>Token usage and session spend</span></li>
+                <li><code>/context</code><span>Visualize context window usage</span></li>
+                <li><code>/diff</code><span>Interactive diff of uncommitted changes</span></li>
+                <li><code>/status</code><span>Account, model, directory, version</span></li>
+              </ul>
+            </div>
+            <div class="cmd-group">
+              <div class="cmd-group-label">Tools &amp; workspace</div>
+              <ul class="cmd-list">
+                <li><code>/init</code><span>Explore codebase, create CLAUDE.md</span></li>
+                <li><code>/memory</code><span>View/edit CLAUDE.md files</span></li>
+                <li><code>/mcp</code><span>Manage MCP servers</span></li>
+                <li><code>/skills</code><span>List available skills</span></li>
+                <li><code>/agents</code><span>Manage agents</span></li>
+                <li><code>/add-dir &lt;path&gt;</code><span>Add working directory</span></li>
+                <li><code>/chrome</code><span>Chrome browser integration</span></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="cmd-group">
+              <div class="cmd-group-label">Built-in skills</div>
+              <ul class="cmd-list">
+                <li><code>/review</code><span>Code review via 3 parallel agents</span></li>
+                <li><code>/security-review</code><span>Security analysis of pending changes</span></li>
+                <li><code>/debug [desc]</code><span>Troubleshoot from debug log</span></li>
+                <li><code>/loop [interval]</code><span>Recurring scheduled task</span></li>
+                <li><code>/batch</code><span>Large parallel changes across worktrees</span></li>
+                <li><code>/plan [desc]</code><span>Plan a feature or task</span></li>
+                <li><code>/simplify</code><span>Review and simplify changed code</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Prompting: Coding -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Coding</div>
+        <ul class="tip-list">
+          <li><strong>4-part prompt:</strong> Role + Goal → Context (relevant code only) → Constraints (language, what NOT to do) → Output shape (format, examples)</li>
+          <li><strong>Right-size the model:</strong> <code>Sonnet</code> for routine work, <code>Opus</code> for hard multi-step or reasoning tasks</li>
+          <li><strong>Negative constraints:</strong> "Do not redesign the architecture", "Don't touch unrelated files", "Don't explain basics"</li>
+          <li><strong>Plan then build:</strong> Explore and decide in session 1, capture to markdown, open a fresh session to implement — planning fills context with dead ends</li>
+          <li><strong>Kill bad runs early:</strong> A derailed agent burns tokens fast. Stop, diagnose the gap, rephrase — don't reroll the same prompt</li>
+          <li><strong>Pipe tool output:</strong> <code>cat nmap.txt | claude -p "analyze for attack surface"</code></li>
+          <li><strong>Pack codebase context:</strong> Use <code>repomix</code> or <code>codesight</code> to bundle cleanly before feeding</li>
+          <li><strong>Convert docs first:</strong> PDFs and webpages carry formatting overhead — feed plain text or markdown</li>
+          <li><strong>Compact proactively:</strong> Run <code>/compact</code> before the context rots, not after</li>
+        </ul>
+      </div>
+
+      <!-- Prompting: Cyber -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Cybersecurity research</div>
+        <ul class="tip-list">
+          <li><strong>Frame as a reviewer:</strong> "You're reviewing an AD config for privilege-escalation paths. Return: finding title, risk rating, affected hosts, repro steps, remediation."</li>
+          <li><strong>Feed raw tool output:</strong> Paste nmap, BloodHound, Nessus, or Burp output and ask for prioritized findings with severity rationale</li>
+          <li><strong>Ask for the kill chain:</strong> "Given these open ports and service versions, describe the most likely attack paths ranked by exploitability"</li>
+          <li><strong>Cross-check findings:</strong> Ask Claude to analyze, then have Gemini or GPT verify. Agreement = confidence; disagreement = dig in</li>
+          <li><strong>Run /security-review</strong> before committing any tool or exploit code you had Claude write</li>
+          <li><strong>Scrub before shipping:</strong> "Review this finding for AI tells: em dashes, puffery, weasel words, promotional tone"</li>
+          <li><strong>Structured report output:</strong> Specify the exact format — "Return: finding title, CVSS score, affected asset, evidence, remediation. No fluff."</li>
+          <li><strong>Don't trust AI-generated URLs or CVE refs</strong> — verify every citation directly</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Do's and Don'ts -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Do's &amp; Don'ts</div>
+        <div class="dos-donts">
+          <div class="do-col">
+            <div class="col-label">Do</div>
+            <ul class="do-list">
+              <li>Give full context before hitting enter — role, goal, constraints, output shape</li>
+              <li>Right-size the model to the task complexity</li>
+              <li>Use negative constraints to stop scope creep</li>
+              <li>Kill a derailed run early and rephrase with a cleaner prompt</li>
+              <li>Verify security findings independently before putting them in a report</li>
+              <li>Use /compact before context fills up</li>
+              <li>Plan in one session, build in a clean one</li>
+              <li>Keep CLAUDE.md lean — no large docs, no task-specific state</li>
+              <li>Use /security-review before committing Claude-generated code</li>
+            </ul>
+          </div>
+          <div class="dont-col">
+            <div class="col-label">Don't</div>
+            <ul class="dont-list">
+              <li>Stuff the context window with noise — it actively degrades output quality</li>
+              <li>Reroll the same prompt expecting different results — diagnose the gap first</li>
+              <li>Anthropomorphize — it's predicting tokens, not understanding your intent</li>
+              <li>Trust AI-generated URLs, CVE refs, or tool output without verification</li>
+              <li>Put client data, secrets, or PII in prompts — assume they may be logged</li>
+              <li>Treat alignment as a security boundary — a model can be jailbroken</li>
+              <li>Let an agent touch production without human-in-the-loop review</li>
+              <li>Leave large documentation files in CLAUDE.md — they burn context every turn</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TAB 3 · GEMINI
+════════════════════════════════════════════ -->
+<div id="panel-gemini" class="tab-panel">
+  <div class="cs-body">
+    <p class="cs-intro">Gemini is Google's flagship model family. Strongest for Google Workspace integration, massive context windows (up to 1M tokens), multimodal input, and Deep Research. This sheet covers Gemini Advanced and the Google AI Studio / gemini.google.com interface.</p>
+
+    <!-- Vocab -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Key vocabulary</div>
+        <div style="columns: 2; column-gap: 2rem;">
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Gems</div>
+            <div class="vocab-def">Custom AI personas with persistent instructions, tools, and context — equivalent to Custom GPTs or Claude Projects. Create once, reuse across sessions.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Deep Research</div>
+            <div class="vocab-def">A multi-step web research agent that autonomously browses, synthesizes, and returns a cited report. Better than asking for a summary of one source.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Grounding</div>
+            <div class="vocab-def">Connecting Gemini to real-time or private data — Google Search, Drive files, or custom data sources — to anchor responses in current facts.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Extensions</div>
+            <div class="vocab-def">Integrations with Google Workspace, YouTube, Flights, Hotels, Maps, and third-party services. Enable in Settings → Extensions.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Flash / Pro / Advanced</div>
+            <div class="vocab-def">Model tiers: Flash = fast and cheap; Pro = balanced; Advanced (Ultra) = most capable, required for Deep Research and 1M context.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">NotebookLM</div>
+            <div class="vocab-def">Google's AI-powered research notebook. Upload sources and ask questions grounded entirely in your documents. Good for report and finding synthesis.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Imagen / Veo</div>
+            <div class="vocab-def">Gemini's image (Imagen) and video (Veo) generation models, accessible via Advanced.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">1M context window</div>
+            <div class="vocab-def">Gemini's headline capability — enough to fit an entire large codebase or hundreds of documents in a single conversation. Available on Flash and Pro.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Keyboard shortcuts -->
+      <div class="cs-card">
+        <div class="cs-card-title">Keyboard shortcuts · gemini.google.com</div>
+        <table class="shortcut-table">
+          <tr><td>Ctrl/Cmd + Enter</td><td>Submit prompt</td></tr>
+          <tr><td>Shift + Enter</td><td>New line in prompt without submitting</td></tr>
+          <tr><td>Esc</td><td>Close panels or cancel current action</td></tr>
+          <tr><td>Ctrl/Cmd + K</td><td>Start a new conversation</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + T</td><td>Toggle Dark/Light theme</td></tr>
+          <tr><td>/ (in prompt)</td><td>Trigger Gems or extension shortcuts</td></tr>
+        </table>
+
+        <div style="margin-top: 1.5rem;">
+          <div class="cmd-group-label">Workspace @ references</div>
+          <ul class="cmd-list">
+            <li><code>@Drive</code><span>Reference a Google Drive file by name</span></li>
+            <li><code>@Gmail</code><span>Reference an email thread</span></li>
+            <li><code>@Docs</code><span>Reference a Google Doc</span></li>
+            <li><code>@Sheets</code><span>Reference a Google Sheet</span></li>
+            <li><code>@Slides</code><span>Reference a Google Slides deck</span></li>
+            <li><code>@Calendar</code><span>Reference calendar events</span></li>
+            <li><code>@YouTube</code><span>Reference a YouTube video transcript</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Features / commands -->
+      <div class="cs-card">
+        <div class="cs-card-title">Key features &amp; how to invoke them</div>
+        <ul class="cmd-list">
+          <li><code>Deep Research</code><span>Click "Deep Research" button before submitting — triggers multi-step web research with citations</span></li>
+          <li><code>Gems</code><span>Menu → Gems → New gem — create reusable personas with instructions and tools</span></li>
+          <li><code>Code execution</code><span>Click Run on any code block (Advanced) — runs Python in-session</span></li>
+          <li><code>Canvas</code><span>Say "Open in canvas" or click the canvas icon for collaborative doc/code editing</span></li>
+          <li><code>Export to Docs</code><span>Click ⋮ → Export to Google Docs on any long response</span></li>
+          <li><code>Image gen</code><span>Ask "Generate an image of..." — uses Imagen 3</span></li>
+          <li><code>NotebookLM</code><span>notebooklm.google.com — upload sources, ask grounded questions</span></li>
+          <li><code>AI Studio</code><span>aistudio.google.com — direct API access, system prompts, model selection, no guardrails</span></li>
+          <li><code>1M context</code><span>Upload files or paste large docs — no chunking needed on Pro/Flash</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Prompting: Coding -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Coding</div>
+        <ul class="tip-list">
+          <li><strong>Paste the whole codebase:</strong> With 1M tokens, you can feed an entire repo. Ask holistic questions: "Identify all authentication pathways and flag any missing authorization checks"</li>
+          <li><strong>Walk then analyze:</strong> "Walk me through what this code does, then identify security issues" — combines explanation with analysis in one pass</li>
+          <li><strong>Use Deep Research for library research:</strong> Before implementing, have Gemini research the library's current API, known CVEs, and best practices</li>
+          <li><strong>Ground in your Drive docs:</strong> <code>@Drive [your spec doc]</code> then "Implement this feature based on the spec" — keeps context in your own materials</li>
+          <li><strong>Security-focused code review:</strong> "Review this Python function for injection vulnerabilities, hardcoded secrets, and insecure deserialization. Output as a numbered list."</li>
+          <li><strong>Code execution for validation:</strong> "Write a script to parse this log format, then run it on this sample and show the output"</li>
+          <li><strong>Use AI Studio for clean API testing:</strong> No chat history overhead — test system prompts and raw model behavior directly</li>
+        </ul>
+      </div>
+
+      <!-- Prompting: Cyber -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Cybersecurity research</div>
+        <ul class="tip-list">
+          <li><strong>Deep Research for threat intel:</strong> "Research recent CVEs affecting Apache 2.4.x — summarize exploitation methods, available PoCs, and detection opportunities"</li>
+          <li><strong>Ground in internal docs:</strong> <code>@Drive [pentest methodology]</code> → "Apply this methodology to the following scope and generate a testing checklist"</li>
+          <li><strong>NotebookLM for report synthesis:</strong> Upload multiple recon outputs, findings, and notes — ask for a unified executive summary grounded only in your data</li>
+          <li><strong>OSINT synthesis:</strong> Upload screenshots, paste text, feed multiple sources — ask for a consolidated profile with confidence ratings</li>
+          <li><strong>Log analysis at scale:</strong> Paste large log files (1M context) and ask "Identify anomalous patterns, failed auth attempts, and unusual egress — summarize by host"</li>
+          <li><strong>Structured finding generation:</strong> "Draft a pentest finding. Format: Title | CVSS | Affected Systems | Technical Detail | Remediation. Tone: technical, no puffery."</li>
+          <li><strong>Verify Deep Research citations:</strong> Gemini browses the web but can still hallucinate. Click through every source before putting it in a deliverable.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Do's and Don'ts -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Do's &amp; Don'ts</div>
+        <div class="dos-donts">
+          <div class="do-col">
+            <div class="col-label">Do</div>
+            <ul class="do-list">
+              <li>Use Deep Research for any multi-source, citation-required research task</li>
+              <li>Leverage the 1M token window for large file and codebase analysis</li>
+              <li>Create Gems for repeated workflows — AD review, log analysis, report generation</li>
+              <li>Ground in your Drive docs for project-specific context</li>
+              <li>Use @Workspace references to pull in live data without copy-pasting</li>
+              <li>Use NotebookLM when you need answers grounded strictly in your own documents</li>
+              <li>Use AI Studio for raw model access without chat overhead</li>
+            </ul>
+          </div>
+          <div class="dont-col">
+            <div class="col-label">Don't</div>
+            <ul class="dont-list">
+              <li>Assume Deep Research citations are accurate — always click through to the source</li>
+              <li>Use the free tier for sensitive work — use Advanced with appropriate data privacy settings</li>
+              <li>Rely on Gemini alone for security-critical findings</li>
+              <li>Skip output format instructions — Gemini can be verbose without constraints</li>
+              <li>Feed raw binary or complex PDFs — convert to text or use Drive integration instead</li>
+              <li>Neglect to verify @Workspace data is current — cached docs may be stale</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     TAB 4 · CHATGPT
+════════════════════════════════════════════ -->
+<div id="panel-chatgpt" class="tab-panel">
+  <div class="cs-body">
+    <p class="cs-intro">ChatGPT is OpenAI's consumer-facing product powered by GPT-4o and the o-series reasoning models. Strongest for iterative writing, Canvas collaboration, Code Interpreter data analysis, and the widest ecosystem of Custom GPTs.</p>
+
+    <!-- Vocab -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Key vocabulary</div>
+        <div style="columns: 2; column-gap: 2rem;">
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Custom GPTs</div>
+            <div class="vocab-def">Specialized AI personas with custom instructions, uploaded knowledge files, and tool access. Browse or build at chatgpt.com/gpts.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Canvas</div>
+            <div class="vocab-def">Collaborative document/code editing mode that opens a side panel. Lets you highlight sections for targeted edits without rewriting the whole thing.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Memory</div>
+            <div class="vocab-def">Facts ChatGPT retains across all your conversations. Check Settings → Personalization → Memory. Can be per-conversation or persistent.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Code Interpreter</div>
+            <div class="vocab-def">Also called Advanced Data Analysis. Runs Python in-session, analyzes files, generates charts. Attach any CSV, log, or code file.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Projects</div>
+            <div class="vocab-def">Persistent workspaces with uploaded files and custom instructions. Share context across multiple chats on the same engagement.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">GPT-4o</div>
+            <div class="vocab-def">OpenAI's fast multimodal flagship. Text, vision, voice, image generation (DALL-E 3). Best for speed and everyday tasks.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">o3 / o4-mini</div>
+            <div class="vocab-def">OpenAI's reasoning models — think through problems step-by-step before responding. Slower and more expensive, but dramatically better on hard logic, math, and analysis.</div>
+          </div>
+          <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
+            <div class="vocab-term">Sycophancy</div>
+            <div class="vocab-def">ChatGPT's tendency to agree with whatever you say, even when you're wrong. Push back explicitly: "What's wrong with this approach?" or "Critique this."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Keyboard shortcuts -->
+      <div class="cs-card">
+        <div class="cs-card-title">Keyboard shortcuts</div>
+        <table class="shortcut-table">
+          <tr><td>Ctrl/Cmd + /</td><td>Show all keyboard shortcuts</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + ;</td><td>New chat</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + C</td><td>Toggle sidebar</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + O</td><td>Open chat history</td></tr>
+          <tr><td>Ctrl/Cmd + Shift + A</td><td>Attach a file</td></tr>
+          <tr><td>Shift + Esc</td><td>Focus chat input</td></tr>
+          <tr><td>Ctrl/Cmd + Enter</td><td>Submit prompt</td></tr>
+          <tr><td>Shift + Enter</td><td>New line without submitting</td></tr>
+        </table>
+      </div>
+
+      <!-- Features -->
+      <div class="cs-card">
+        <div class="cs-card-title">Key features &amp; how to invoke them</div>
+        <ul class="cmd-list">
+          <li><code>Canvas</code><span>Click canvas icon or say "Open in canvas" — opens side-by-side editor</span></li>
+          <li><code>Code Interpreter</code><span>Attach a file (CSV, log, code) — ChatGPT auto-enables analysis mode</span></li>
+          <li><code>Image generation</code><span>Say "Generate an image of..." or click the image icon — uses DALL-E 3</span></li>
+          <li><code>Web browse</code><span>Click the browse icon or ask "Search the web for..." — uses Bing</span></li>
+          <li><code>Voice mode</code><span>Click the headphone icon — real-time voice conversation with GPT-4o</span></li>
+          <li><code>Memory</code><span>Settings → Personalization → Memory — view, edit, or delete what it knows</span></li>
+          <li><code>Custom GPTs</code><span>chatgpt.com/gpts — browse store or click your name → My GPTs to build</span></li>
+          <li><code>Projects</code><span>Left sidebar → + New project — persistent files + custom instructions per project</span></li>
+          <li><code>o3 model</code><span>Model picker → o3 — reasoning model for complex analysis and hard problems</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-grid">
+      <!-- Prompting: Coding -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Coding</div>
+        <ul class="tip-list">
+          <li><strong>Canvas for long code:</strong> "Open in canvas, write a Python script that..." — then highlight specific sections and say "refactor this part to use async"</li>
+          <li><strong>Code Interpreter for data:</strong> Attach a CSV or log file: "Clean this data, identify anomalies, and plot the key trends as charts"</li>
+          <li><strong>Structured iteration:</strong> "Write the function. Now add error handling. Now write unit tests." — step-by-step beats a single mega-prompt</li>
+          <li><strong>Senior reviewer framing:</strong> "You are a senior Python developer. Review this code for security issues, bugs, and performance problems. Output as a numbered list with severity."</li>
+          <li><strong>Criticize then rewrite:</strong> "Criticize this implementation. Then rewrite it." — forces critique before it starts agreeing with you</li>
+          <li><strong>Use o3 for hard problems:</strong> Algorithm design, complex logic, architecture decisions — reasoning models think before they answer</li>
+          <li><strong>Projects for ongoing work:</strong> Upload your codebase, README, and style guide once — reference them across every session</li>
+        </ul>
+      </div>
+
+      <!-- Prompting: Cyber -->
+      <div class="cs-card">
+        <div class="cs-card-title">Prompting · Cybersecurity research</div>
+        <ul class="tip-list">
+          <li><strong>Red team operator framing:</strong> "You are a red team operator. Given this network diagram [paste], identify the most likely attack paths and rank by exploitability."</li>
+          <li><strong>Code Interpreter for log analysis:</strong> Attach .log or .csv files: "Identify failed auth attempts, unusual egress, and lateral movement indicators. Summarize by source IP."</li>
+          <li><strong>CVE analysis:</strong> "Summarize this CVE [paste full text] and write a detection rule for Splunk that would catch this behavior"</li>
+          <li><strong>Structured finding output:</strong> "Draft a pentest finding. Format: Title | CVSS | Affected Systems | Technical Detail | Remediation. No em dashes, no puffery, no weasel words."</li>
+          <li><strong>Compare and prioritize:</strong> "Compare these two findings and identify which is higher priority. Use this CVSS context: [paste]. Justify your ranking."</li>
+          <li><strong>Persistent methodology:</strong> Use Projects — upload your pentest methodology doc and custom instructions. Every new chat in the project inherits the context.</li>
+          <li><strong>Force pushback:</strong> Ask "What's wrong with this approach?" or "What am I missing?" — ChatGPT's default is to agree; you have to explicitly ask for critique</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Do's and Don'ts -->
+    <div class="cs-full">
+      <div class="cs-card">
+        <div class="cs-card-title">Do's &amp; Don'ts</div>
+        <div class="dos-donts">
+          <div class="do-col">
+            <div class="col-label">Do</div>
+            <ul class="do-list">
+              <li>Use Projects for ongoing engagements — persistent files and custom instructions</li>
+              <li>Use Code Interpreter for file analysis instead of copy-pasting raw data</li>
+              <li>Use Canvas for long-form report writing and iterative code editing</li>
+              <li>Pick o3 for complex reasoning (logic, architecture, hard analysis)</li>
+              <li>Use GPT-4o for fast, multimodal, everyday tasks</li>
+              <li>Explicitly ask for critique — "What's wrong with this?", "Criticize this approach"</li>
+              <li>Check Memory settings — it may retain more than you expect across sessions</li>
+              <li>Set custom instructions once with your role and preferences instead of repeating per-prompt</li>
+            </ul>
+          </div>
+          <div class="dont-col">
+            <div class="col-label">Don't</div>
+            <ul class="dont-list">
+              <li>Upload client data or PII without checking your data privacy settings first</li>
+              <li>Trust Browse results without clicking through to the original source</li>
+              <li>Use one model for everything — match the model to the task</li>
+              <li>Assume Memory is accurate — it can misremember; verify with "What do you know about me?"</li>
+              <li>Accept the first answer as final — ChatGPT is trained to please, not to be right</li>
+              <li>Use ChatGPT's web search for security-critical research without source verification</li>
+              <li>Put sensitive engagement details into a shared or default GPT — use Projects with appropriate privacy settings</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── Tab switching ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
+  window.scrollTo({ top: document.querySelector('.tab-strip-wrap').offsetTop - 64, behavior: 'smooth' });
+}
+
+/* ── Glossary ── */
+const TERMS = [
+  { term: "Abliterated Models", tag: "model types", def: "[From the talk] Suppress safety and refusal behavior through activation-space modifications instead of retraining. Note: Increased willingness to answer does not increase knowledge and may increase hallucinations." },
+  { term: "AGI (Artificial General Intelligence)", tag: "concepts", def: "Artificial general intelligence (AGI) is a hypothetical type of AI that mimics human-like intelligence. (Syracuse) / An AI system with general, human-level (or beyond) ability to learn, reason, and apply knowledge across a wide range of tasks and domains. (Stanford)" },
+  { term: "Agent", tag: "architecture", def: "[From the talk] A model plus everything around it that lets it act, not just respond. Observe, act, observe again, repeat. — Also: Autonomous or semi-autonomous AI entities that can perform tasks, make decisions, and call tools or APIs based on goals. (MIT)" },
+  { term: "Agentic AI", tag: "architecture", def: "AI systems designed to act as autonomous or semi-autonomous agents: they can set or interpret goals, plan and sequence actions, use tools (like web browsers, code, or APIs), make decisions based on feedback, and adapt over time to complete tasks. (Stanford)" },
+  { term: "AI Alignment", tag: "safety", def: "Refers to ensuring an AI system's goals and actions match those of its creators or human values. (Syracuse) / Making sure an AI system's goals and behavior match what people actually want—our values, rules, and intentions. (Stanford)" },
+  { term: "AI Benchmarks", tag: "evaluation", def: "Standardized tests used to measure and compare how well AI systems perform on specific tasks, like answering questions, recognizing images, writing code, or following instructions. (Stanford)" },
+  { term: "AI Ethics", tag: "policy", def: "A field of applied ethics focused on the development and use of AI in a way that aligns with moral principles, particularly fairness, transparency, accountability, and respect for human values. (Syracuse)" },
+  { term: "AI Fluency", tag: "skills", def: "The capacity to collaborate productively and responsibly with AI systems through understanding their capabilities, limitations, and implications. This encompasses the practical skills to leverage AI tools effectively, the critical thinking to evaluate their outputs, the ethical awareness to use them responsibly, and the adaptability to evolve alongside rapidly changing AI technologies. (Stanford)" },
+  { term: "AI Safety", tag: "safety", def: "An interdisciplinary field aiming to mitigate risks from AI systems. (Syracuse) / The field focused on ensuring AI systems behave reliably and don't cause harm, even when they're powerful, widely deployed, or operating in unexpected situations. (Stanford)" },
+  { term: "AI Workflow", tag: "concepts", def: "The end-to-end process of building, deploying, and maintaining an AI system, from collecting data to making predictions. It includes stages like data preparation, model training, testing, and deployment, with each step building on the previous one to create a functioning AI application. (Stanford)" },
+  { term: "Algorithm", tag: "fundamentals", def: "A finite set of well-defined instructions for performing a specific task. (Syracuse) / A set of step-by-step instructions for solving a problem or completing a task, similar to a recipe. (Stanford)" },
+  { term: "Anthropomorphism", tag: "concepts", def: "We use the term anthropomorphism to describe the habit of assigning human-like qualities to AI. While AI systems can imitate human emotions or speech, they don't possess feelings or consciousness. (MIT)" },
+  { term: "Artificial Intelligence (AI)", tag: "fundamentals", def: "The endeavor of creating intelligent agents, which are systems that reason, learn, and act autonomously in pursuit of goals. (Syracuse) / A term coined in 1955 by John McCarthy, Stanford's first faculty member in AI, who described it as 'the science and engineering of making intelligent machines.' (Stanford)" },
+  { term: "Attention Mechanism", tag: "architecture", def: "A method in neural networks that helps a model focus on the most relevant parts of the input when producing an output. (Stanford)" },
+  { term: "Automation", tag: "concepts", def: "When technology such as AI performs specific tasks based on explicit human instructions. The human defines what needs to be done, and the AI executes it according to those predetermined parameters. (Stanford)" },
+  { term: "Backpropagation", tag: "training", def: "How neural networks learn from mistakes by working backward through the network to figure out which parts caused the error. (Stanford)" },
+  { term: "Bayesian Networks", tag: "techniques", def: "Graphical models that represent cause-and-effect relationships between variables using probabilities, like a map showing how different factors influence each other. (Stanford)" },
+  { term: "Bias (in AI)", tag: "safety", def: "Bias in AI models refers to output errors caused by skewed training data. Such bias can cause models to produce inaccurate, offensive, or misleading predictions. (MIT) / Refers to systematic prejudice within an algorithm or model. (Syracuse) / When a system produces results that favor or discriminate against certain groups of people. (Stanford)" },
+  { term: "Big Data", tag: "data", def: "Extremely large datasets, too large to be analyzed by traditional data-processing software, that can be analyzed using AI to reveal patterns and trends. (Stanford)" },
+  { term: "Chain-of-Thought Prompting", tag: "prompting", def: "Chain-of-thought prompting is when you write prompts to encourage the AI model to reason step-by-step before arriving at an answer. (MIT)" },
+  { term: "Chatbot", tag: "applications", def: "A program simulating conversation with human users through text or voice commands. (Syracuse) / A computer program designed to simulate conversation with humans, typically through text or voice interactions. (Stanford)" },
+  { term: "Closed Source", tag: "model types", def: "Also called proprietary software, software whose underlying code is restricted and not available for the public to view, modify, or use. (Stanford)" },
+  { term: "Computer Vision", tag: "techniques", def: "A field of AI that enables computers to see, identify, and understand visual information from images and videos, similar to how humans see and process this information. (Stanford)" },
+  { term: "Context Rot", tag: "prompting", def: "[From the talk] The more junk you stuff into the window, the worse the signal-to-noise. The model drifts, quality quietly drops, and you spend tokens on noise it has to wade through." },
+  { term: "Context Window", tag: "architecture", def: "[From the talk] The model's working memory for one run, measured in tokens. Everything competes for space here. — Also: The maximum number of tokens that an AI model can process and consider simultaneously when generating a response. (MIT) / The amount of input that an AI system can process at one time during a task. (Stanford)" },
+  { term: "Contrastive Learning", tag: "training", def: "A machine learning technique where the model learns by comparing similar and dissimilar examples to understand what makes things alike or different. (Stanford)" },
+  { term: "Data Augmentation", tag: "training", def: "An artificial data manipulation technique in machine learning. (Syracuse) / A technique to artificially expand a training dataset by creating modified versions of existing data without collecting anything new. (Stanford)" },
+  { term: "Data Extraction Attacks", tag: "security", def: "[From the talk] Target the model's training data or fine-tuning information. Under some conditions, models can reproduce memorized training examples, including sensitive data if it was present during training." },
+  { term: "Data Mining", tag: "data", def: "The process of discovering patterns and trends in large datasets using statistical methods and machine learning. (Stanford)" },
+  { term: "Decision Tree", tag: "techniques", def: "A machine learning algorithm that makes predictions by asking yes/no questions, splitting data at each step based on different features until reaching a final conclusion. (Stanford)" },
+  { term: "Deep Learning", tag: "techniques", def: "A subfield of machine learning inspired by the structure and function of the human brain. (Syracuse) / A subset of machine learning that uses large multi-layer neural networks to automatically learn complex patterns from data. (Stanford)" },
+  { term: "Diffusion Models", tag: "generative ai", def: "A process that progressively adds noise to data. (Syracuse) / A type of generative model that creates new content like images by adding and then subtracting 'noise.' (Stanford)" },
+  { term: "Dimensionality Reduction", tag: "techniques", def: "A technique for simplifying complex data by reducing the number of variables while preserving the most important information. (Stanford)" },
+  { term: "Embeddings", tag: "architecture", def: "Numerical representations that convert complex data (like words, images, or other objects) into vectors of numbers that capture their meaning or characteristics. (Stanford)" },
+  { term: "Emergent Behavior", tag: "concepts", def: "We call the unexpected skills showcased by vast language models emergent behaviors. These talents span coding, musical composition, poetry crafting, and even the creation of fictional narratives. (MIT)" },
+  { term: "End-to-End Learning (E2E)", tag: "training", def: "Training a single model in machine learning to map raw input data directly to the desired output. (Syracuse)" },
+  { term: "Ensemble Methods", tag: "techniques", def: "Machine learning techniques that combine multiple models to produce a single, more accurate and robust prediction than any individual model could achieve alone. (Stanford)" },
+  { term: "Ethical AI", tag: "policy", def: "The design, development, and deployment of artificial intelligence systems that align with human values, fairness, transparency, and societal well-being. (Stanford)" },
+  { term: "Expert System", tag: "concepts", def: "AI programs designed to mimic the decision-making abilities of human experts in specific domains by using a knowledge base of facts and a set of logical rules to draw conclusions, mainly using if-then rules. (Stanford)" },
+  { term: "Explainable AI (XAI)", tag: "safety", def: "Methods and techniques that make AI systems' decisions and predictions understandable and interpretable to humans, rather than operating as opaque 'black boxes.' (Stanford)" },
+  { term: "Federated Learning", tag: "training", def: "A machine learning approach where a model is trained across multiple decentralized devices or servers that hold local data, without the data ever leaving its original location. (Stanford)" },
+  { term: "Few-Shot Learning", tag: "prompting", def: "A machine learning approach where models can learn to recognize or perform new tasks with only a small number of training examples. (Stanford)" },
+  { term: "Fine-tuning", tag: "training", def: "Further training a pre-existing AI model on a specialized dataset to improve its performance on specific tasks, audiences, or domains. (MIT) / The process of taking a pre-trained model and further training it on task or domain specific data. (Stanford)" },
+  { term: "Foundation Model", tag: "model types", def: "Large-scale AI models, often transformers, trained on vast amounts of broad, diverse data that can be adapted to perform a wide variety of downstream tasks, serving as a 'foundation' for many different applications. (Stanford)" },
+  { term: "Generative Adversarial Networks (GANs)", tag: "generative ai", def: "A class of deep learning models for generating new data. (Syracuse) / A type of AI architecture consisting of two neural networks—a 'generator' and a 'discriminator'—that compete against each other in a process to create realistic synthetic data. (Stanford)" },
+  { term: "Generative AI", tag: "generative ai", def: "Generative AI is an advanced technological approach that enables the creation of content including text, images, and videos. (MIT) / Refers to artificial intelligence techniques that create new data, like images, text, or music. (Syracuse) / AI systems that can create new content like text, images, music, code, or video. (Stanford)" },
+  { term: "Generative Pre-Trained Transformer (GPT)", tag: "model types", def: "A family of large language models developed that uses the transformer architecture to generate human-like text based on input prompts. (Stanford)" },
+  { term: "GPU (Graphics Processing Unit)", tag: "hardware", def: "A specialized electronic chip originally designed to rapidly render graphics and images by performing many mathematical calculations simultaneously in parallel. (Stanford)" },
+  { term: "Hallucination", tag: "safety", def: "We call the occurrences where large language models generate factually inaccurate or illogical answers due to data and architecture constraints hallucinations. (MIT) / Refers to outputs that deviate significantly from real data. (Syracuse) / Instances where an artificial intelligence system generates information or responses that are incorrect, misleading, or entirely fabricated but presented as factual. (Stanford)" },
+  { term: "Harness", tag: "architecture", def: "[From the talk] The execution layer that calls the model, runs its tool calls, and decides when to stop. It's what makes the thing run." },
+  { term: "Human-Centered AI", tag: "policy", def: "An approach to AI that prioritizes human needs, values, and well-being throughout the development and deployment of AI systems. (Stanford)" },
+  { term: "Human-Computer Interaction (HCI)", tag: "concepts", def: "The process through which people operate and engage with computer systems. (Stanford)" },
+  { term: "Human-in-the-Loop", tag: "safety", def: "AI systems that include human feedback or intervention as part of their operation. (Stanford)" },
+  { term: "Hyperparameter", tag: "training", def: "A parameter whose value is set before the learning process of a machine learning model begins. (Stanford)" },
+  { term: "Inference", tag: "architecture", def: "When a trained AI model makes predictions or decisions on new data it hasn't seen before. (Stanford)" },
+  { term: "Interpretability", tag: "safety", def: "The degree to which humans can understand how an AI system arrives at its decisions or predictions. (Stanford)" },
+  { term: "Jailbreaking", tag: "security", def: "[From the talk] Involves using specific phrases, role-playing scenarios, or hypothetical situations to bypass built-in safety mechanisms. These attacks often leverage the model's training to be helpful and accommodating, turning these positive traits into vulnerabilities." },
+  { term: "k-Nearest Neighbors (k-NN)", tag: "techniques", def: "A simple, intuitive machine learning algorithm used for classification and regression. (Stanford)" },
+  { term: "Knowledge Graph", tag: "data", def: "A structured database that represents information as a network of interconnected entities and their relationships. (Stanford)" },
+  { term: "Large Language Model (LLM)", tag: "model types", def: "Neural networks known as large language models work by forecasting word sequences. (MIT) / A complex AI system trained on massive amounts of text data. (Syracuse) / An AI system trained on massive amounts of text data to understand and generate human-like language. (Stanford)" },
+  { term: "Latent Space", tag: "architecture", def: "A compressed, abstract representation where high-dimensional data (like images, text, or audio) is encoded into a lower-dimensional mathematical space that captures the essential features and patterns. (Stanford)" },
+  { term: "LLMOps", tag: "concepts", def: "The practice of managing the entire lifecycle of LLM-based applications in production environments. (Stanford)" },
+  { term: "Loss Function", tag: "training", def: "A mathematical measure that quantifies how wrong a machine learning model's predictions are compared to the actual correct values. (Stanford)" },
+  { term: "Machine Learning (ML)", tag: "fundamentals", def: "A subfield of AI where algorithms improve their performance on a specific task through experience. (Syracuse) / A branch of artificial intelligence that enables computers to learn patterns and make decisions from data without being explicitly programmed with rules. (Stanford)" },
+  { term: "Markov Chain", tag: "techniques", def: "A mathematical model that describes a sequence of events where the probability of each future event depends only on the current state, not on the history of how you got there. (Stanford)" },
+  { term: "Meta Prompt / System Prompt", tag: "prompting", def: "A meta prompt, also called a system prompt, is a set of instructions provided to the AI model behind the scenes before user interaction begins. (MIT)" },
+  { term: "MLOps", tag: "concepts", def: "A set of practices that combines machine learning, software engineering, and DevOps to deploy, monitor, and maintain ML models reliably in production environments. (Stanford)" },
+  { term: "Model", tag: "architecture", def: "[From the talk] The LLM itself… text in, text out (Claude, GPT, Qwen, DeepSeek). No inherent memory between calls. Any 'memory' comes from the surrounding application. — Also: A simplified mathematical or computational representation used to make predictions or understand patterns. (Stanford)" },
+  { term: "Model Drift", tag: "concepts", def: "When a machine learning model's performance degrades over time because the real-world data it encounters has changed from the data it was originally trained on. (Stanford)" },
+  { term: "Multimodal AI", tag: "model types", def: "A multimodal model is an AI model capable of processing and generating multiple types of input/output such as text, images, audio, and video. (MIT) / Artificial intelligence systems that can process, understand, and generate multiple types of data modalities simultaneously. (Stanford)" },
+  { term: "Natural Language Processing (NLP)", tag: "techniques", def: "Natural Language Processing (NLP) is a subfield of artificial intelligence and computational linguistics that focuses on enabling machines to understand, interpret, and generate human language. (MIT) / A subfield of AI concerned with enabling computers to understand and manipulate human language. (Syracuse) / A branch of artificial intelligence focused on enabling computers to understand, interpret, and generate human language in a meaningful way. (Stanford)" },
+  { term: "Neural Network", tag: "fundamentals", def: "Neural Networks, modeled after the human brain, are a mathematical system that actively learns skills by identifying and analyzing statistical patterns in data. (MIT) / Computational models inspired by the structure and function of the brain. (Syracuse) / A computational model inspired by the structure of the human brain, consisting of interconnected layers of artificial 'neurons' that process and transmit information. (Stanford)" },
+  { term: "Open Source", tag: "model types", def: "Software where its original design, or 'blueprint,' is made freely available for anyone to see and use. (Stanford)" },
+  { term: "Open-Weight Model", tag: "model types", def: "An AI model whose core components are publicly released, allowing anyone to download it. (Stanford)" },
+  { term: "Optimization Algorithm", tag: "training", def: "A method that helps a machine learning model get better by adjusting its settings to make fewer mistakes. (Stanford)" },
+  { term: "Overfitting", tag: "training", def: "When a model memorizes the training data too closely, including mistakes and random patterns. (Stanford)" },
+  { term: "Parameters", tag: "architecture", def: "In the realm of AI systems, developers establish numerical values referred to as parameters. (MIT) / Adjustable elements within a model, like weights and biases in neural networks. (Syracuse) / An internal variable within a machine learning model that is learned and adjusted during the training phase. (Stanford)" },
+  { term: "Predictive Analytics", tag: "applications", def: "The practice of using data, statistical methods, and machine learning models to forecast future outcomes or trends. (Stanford)" },
+  { term: "Prompt", tag: "prompting", def: "A user-provided input that guides the model's generation process. (Syracuse)" },
+  { term: "Prompt Chaining", tag: "prompting", def: "Involves feeding the output of one generative model as the prompt for a subsequent model. (Syracuse)" },
+  { term: "Prompt Engineering", tag: "prompting", def: "Prompt engineering is the practice of designing effective prompts to guide an AI model's output. (MIT) / The art of crafting instructions for artificial intelligence models, specifically generative AI models. (Syracuse) / The practice of carefully crafting instructions, or 'prompts,' to guide AI language models toward producing desired outputs. (Stanford)" },
+  { term: "Prompt Injection", tag: "security", def: "[From the talk] Represents the most common form of adversarial manipulation. Attackers embed malicious instructions within seemingly legitimate queries, causing the model to ignore its original instructions and follow the attacker's commands instead. — Also: A type of security attack that uses malicious input to trick a Large Language Model (LLM) into behaving in an unintended way. (Stanford)" },
+  { term: "RAG (Retrieval-Augmented Generation)", tag: "architecture", def: "RAG (Retrieval-Augmented Generation) is a method that combines a language model with external sources added by the user, such as documents, PDFs, or other materials. (MIT) / A technique that helps language models generate higher-quality outputs by allowing them to look up external, up-to-date information first. (Stanford)" },
+  { term: "Reasoning Models", tag: "model types", def: "A class of LLMs that think through complex problems step by step before generating a response, improving accuracy on logic, math, and multi-step analysis tasks. (MIT) / A type of AI system designed to solve complex problems by generating a logical, step-by-step sequence of thought. (Stanford)" },
+  { term: "Reinforcement Learning", tag: "training", def: "Reinforcement Learning is a method in AI training where models learn optimal decision-making strategies through cycles of actions and feedback. (MIT) / A type of machine learning where an AI agent improves its performance through trial and error by taking actions within a specific setting. (Stanford)" },
+  { term: "Responsible AI", tag: "policy", def: "Frameworks, principles, and practices that guide the ethical and safe development and deployment of artificial intelligence systems. (Stanford)" },
+  { term: "Robotics", tag: "concepts", def: "The field that combines engineering and computer science, and now often artificial intelligence, to design and build machines capable of performing physical tasks. (Stanford)" },
+  { term: "Scaffolding", tag: "architecture", def: "[From the talk] The behavior layer: system prompt, tool descriptions, output format, memory." },
+  { term: "Scaling Laws", tag: "concepts", def: "Predictable mathematical relationships that describe how AI model performance improves as factors like model size, training data, and computing power increase. (Stanford)" },
+  { term: "Self-Supervised Learning", tag: "training", def: "A training method where an AI model teaches itself by creating its own puzzles from raw data and then trying to solve them. (Stanford)" },
+  { term: "Semantic Analysis", tag: "techniques", def: "The process of understanding the meaning of language by examining the relationship between words, phrases, and symbols. (Stanford)" },
+  { term: "Skills (AI)", tag: "architecture", def: "[From the talk] Reusable packages of knowledge for a task. A tool does one action; a skill bundles everything to reach a goal." },
+  { term: "Spatial Intelligence", tag: "concepts", def: "The ability to understand and reason about the three-dimensional physical world, including how objects relate to each other in space, how they move, and how they interact. (Stanford)" },
+  { term: "Style Transfer", tag: "generative ai", def: "A technique for applying the visual style of one image to another. (Syracuse)" },
+  { term: "Supervised Learning", tag: "training", def: "A machine learning approach where models are trained on labeled data—input examples paired with correct output answers. (Stanford)" },
+  { term: "Synthetic Data", tag: "data", def: "Artificially generated information created by algorithms or simulations rather than collected from real-world events or observations. (Stanford)" },
+  { term: "Temperature", tag: "prompting", def: "An AI tool's temperature setting controls how deterministic or creative that AI model's output is. (MIT) / Parameters set to control how random a language model's output is. (Syracuse)" },
+  { term: "Tensor", tag: "fundamentals", def: "Essentially a container for numbers organized in multiple dimensions, like a more advanced version of a spreadsheet. (Stanford)" },
+  { term: "Text-to-3D Model Generation", tag: "generative ai", def: "Creating digital representations of three-dimensional objects based on textual descriptions. (Syracuse)" },
+  { term: "Text-to-Audio Generation", tag: "generative ai", def: "Creating audio based on textual descriptions. (Syracuse)" },
+  { term: "Text-to-Code Generation", tag: "generative ai", def: "Creating programming code based on textual descriptions. (Syracuse)" },
+  { term: "Text-to-Face Generation", tag: "generative ai", def: "Creating realistic facial images based on textual descriptions. (Syracuse)" },
+  { term: "Text-to-Image Generation", tag: "generative ai", def: "Creating images based on textual descriptions. (Syracuse)" },
+  { term: "Text-to-Video Generation", tag: "generative ai", def: "Creating video based on textual descriptions. (Syracuse)" },
+  { term: "Tokenization", tag: "architecture", def: "The process of breaking down text into smaller units called tokens—which can be words, parts of words, or even individual characters—that AI language models can process. (Stanford)" },
+  { term: "Tokens", tag: "architecture", def: "[From the talk] The chunks models actually read. Tokens are chunks of text, often averaging around ¾ of an English word. You pay per token, in and out. — Also: A token is the smallest unit of text that an AI model processes and understands; this is typically 4 characters in English, or about ¾ of a word. (MIT) / The fundamental units of text processed by the model. (Syracuse)" },
+  { term: "Traditional AI", tag: "fundamentals", def: "Earlier approaches to artificial intelligence that relied on explicitly programmed rules, logic, and human-defined knowledge rather than learning from data. (Stanford)" },
+  { term: "Training Data", tag: "data", def: "The datasets used to help AI models learn, including text, images, code or data. (Syracuse) / The collection of examples—such as text, images, audio, or other information—used to teach machine learning models how to perform specific tasks. (Stanford)" },
+  { term: "Transfer Learning", tag: "training", def: "A machine learning technique where a model trained on one task is reused as the starting point for a different but related task. (Stanford)" },
+  { term: "Transformer Model", tag: "architecture", def: "Transformer models can process entire sentences simultaneously rather than in sequence, aiding in grasping context and the language's long-term associations. (MIT) / A neural network architecture and deep learning model that learns context by tracking relationships in data. (Syracuse) / A neural network architecture that revolutionized AI by using a mechanism called 'attention' to process and understand relationships between all parts of input data simultaneously, rather than sequentially. (Stanford)" },
+  { term: "Turing Test", tag: "concepts", def: "Named after famed mathematician and computer scientist Alan Turing, gauges a machine's ability to exhibit human-like intelligence through conversation. (Syracuse) / Proposed by mathematician Alan Turing in 1950, a measure of a machine's ability to exhibit intelligent behavior indistinguishable from a human. (Stanford)" },
+  { term: "Uncensored Models", tag: "model types", def: "[From the talk] Retrained so they're simply taught not to refuse, rather than being tricked into it." },
+  { term: "Unsupervised Learning", tag: "training", def: "A machine learning approach where models are trained on data without labeled answers or predefined categories, tasked with finding patterns and structure on their own. (Stanford)" },
+  { term: "Vector Database", tag: "architecture", def: "A specialized type of database designed to store and efficiently search through high-dimensional numerical representations (vectors) of data like text, images, or audio. (Stanford)" },
+  { term: "Vision Transformer (ViT)", tag: "architecture", def: "An adaptation of the transformer architecture, originally designed for language, to process and analyze images. (Stanford)" },
+  { term: "Weights", tag: "fundamentals", def: "The numerical parameters within a neural network that determine the strength of connections between artificial neurons and ultimately shape how the model processes information. (Stanford)" },
+  { term: "Zero-Shot Learning", tag: "prompting", def: "A type of machine learning technique where a model is able to recognize and classify objects or perform tasks it has never seen before. (Syracuse) / The ability of an AI model to perform tasks or recognize categories it has never been explicitly trained on, using only its general knowledge and understanding. (Stanford)" },
+];
+
+TERMS.sort((a, b) => a.term.localeCompare(b.term));
+
+function groupByLetter(terms) {
+  const groups = {};
+  for (const t of terms) {
+    const letter = t.term.replace(/[^a-zA-Z]/, '')[0].toUpperCase();
+    if (!groups[letter]) groups[letter] = [];
+    groups[letter].push(t);
+  }
+  return groups;
+}
+
+function renderGlossary(terms) {
+  const container = document.getElementById('glossaryContent');
+  const noResults = document.getElementById('noResults');
+  const count = document.getElementById('glossaryCount');
+  count.textContent = terms.length + ' term' + (terms.length !== 1 ? 's' : '');
+  if (!terms.length) { container.innerHTML = ''; noResults.style.display = 'block'; return; }
+  noResults.style.display = 'none';
+  const groups = groupByLetter(terms);
+  let html = '';
+  for (const letter of Object.keys(groups).sort()) {
+    html += '<div class="glossary-letter-group"><div class="glossary-letter" id="gletter-' + letter + '">' + letter + '</div><div class="glossary-entries">';
+    for (const t of groups[letter]) {
+      html += '<div class="glossary-entry"><div class="glossary-tag">' + t.tag + '</div><div class="glossary-term">' + t.term + '</div><div class="glossary-def">' + t.def + '</div></div>';
+    }
+    html += '</div></div>';
+  }
+  container.innerHTML = html;
+}
+
+function buildAlphaNav() {
+  const present = new Set(TERMS.map(t => t.term.replace(/[^a-zA-Z]/, '')[0].toUpperCase()));
+  const nav = document.getElementById('alphaJump');
+  for (let c = 65; c <= 90; c++) {
+    const l = String.fromCharCode(c);
+    const a = document.createElement('a');
+    a.href = '#gletter-' + l;
+    a.textContent = l;
+    a.className = present.has(l) ? 'has-terms' : 'no-terms';
+    nav.appendChild(a);
+  }
+}
+
+document.getElementById('glossarySearch').addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  renderGlossary(q ? TERMS.filter(t => t.term.toLowerCase().includes(q) || t.def.toLowerCase().includes(q) || t.tag.toLowerCase().includes(q)) : TERMS);
+});
+
+buildAlphaNav();
+renderGlossary(TERMS);
+</script>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/hasr00t" target="_blank" rel="noopener">GitHub</a>
+      <a href="/talks/">Talks</a>
+      <a href="mailto:ashley@shehacks.it">Email</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 shehacks.it</p>
+  </div>
+</footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
