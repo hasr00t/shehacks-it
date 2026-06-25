@@ -544,7 +544,7 @@
         <div class="vocab-grid" style="columns: 2; column-gap: 2rem;">
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">Model</div>
-            <div class="vocab-def">The LLM itself — text in, text out. No inherent memory between calls. Any "memory" comes from the surrounding application.</div>
+            <div class="vocab-def">The model itself has no persistent memory between API calls. Any memory comes from the surrounding application (chat history, memory features, projects, uploaded files, etc.). Any "memory" comes from the surrounding application.</div>
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">Harness</div>
@@ -819,7 +819,7 @@
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">1M context window</div>
-            <div class="vocab-def">Gemini's largest available context size — enough to fit an entire large codebase or hundreds of documents in a single conversation. Available on Flash and Pro.</div>
+            <div class="vocab-def">Gemini models support up to a 1M-token context window, though practical limits can vary depending on the interface and workflow. Available on Flash and Pro.</div>
           </div>
         </div>
       </div>
@@ -833,7 +833,7 @@
           <tr><td>Enter</td><td>Submit prompt</td></tr>
           <tr><td>Shift + Enter</td><td>New line without submitting</td></tr>
         </table>
-        <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.55; margin-top: 0.8rem;">Gemini's web app has very few native keyboard shortcuts beyond these basics. Power users add a browser extension for model switching, search, and theme toggles.</p>
+        <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.55; margin-top: 0.8rem;">Gemini's web app has very few native keyboard shortcuts beyond these basics and Google may add or change shortcuts over time. Power users add a browser extension for model switching, search, and theme toggles.</p>
 
         <div style="margin-top: 1.5rem;">
           <div class="cmd-group-label">Workspace @ references</div>
@@ -936,7 +936,7 @@
 ════════════════════════════════════════════ -->
 <div id="panel-chatgpt" class="tab-panel">
   <div class="cs-body">
-    <p class="cs-intro">ChatGPT is OpenAI's consumer-facing product powered by GPT-4o and the o-series reasoning models. Best for iterative writing, Canvas collaboration, Code Interpreter data analysis, and the largest library of Custom GPTs.</p>
+    <p class="cs-intro">ChatGPT is OpenAI's consumer-facing AI product powered by GPT-series multimodal models and reasoning-focused models. Best for iterative writing, Canvas collaboration, Code Interpreter data analysis, and the largest library of Custom GPTs.</p>
 
     <!-- Vocab -->
     <div class="cs-full">
@@ -965,7 +965,7 @@
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">GPT-4o</div>
-            <div class="vocab-def">OpenAI's fast multimodal model. Text, vision, voice, image generation (DALL-E 3). Best for speed and everyday tasks.</div>
+            <div class="vocab-def">OpenAI's fast multimodal model. GPT-4o supports text, vision, voice, and image generation. Best for speed and everyday tasks.</div>
           </div>
           <div class="vocab-item" style="break-inside: avoid; margin-bottom: 0.75rem;">
             <div class="vocab-term">o3 / o4-mini</div>
